@@ -1,0 +1,7 @@
+while true
+do
+	echo
+	date
+	fortune  $@ | cowsay -s -f $(ls /usr/share/cows/ | shuf | head -n1)
+	sleep 5
+done

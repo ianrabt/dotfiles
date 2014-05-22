@@ -1,0 +1,18 @@
+#!/bin/bash
+
+[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+export XDG_MENU_PREFIX=gnome-
+
+xscreensaver -no-splash &
+if [[ $# -eq 0 ]]; then
+	feh --bg-fill ~/bin/wallpapers/wallpaper-2997492.jpg &
+elif [[ "$1" == "--no-bg" ]]; then
+	echo 'not setting background...'
+elif [[ $# -eq 1 ]]; then
+	feh --bg-fill "$@" &
+else
+	feh $@ &
+fi
+
+compton --opengl --vsync opengl-swc --paint-on-overlay -b -f -D 6 -l-13 -t-13 -cCz -o 0.25 &
+start-pulseaudio-x11

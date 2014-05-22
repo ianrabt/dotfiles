@@ -1,0 +1,21 @@
+# DO NOT EDIT! This file will be overwritten by LXAppearance.
+# Any customization should be done in ~/.gtkrc-2.0.mine instead.
+
+gtk-theme-name="Adwaita"
+gtk-icon-theme-name="Faience-Azur"
+gtk-font-name="Cantarell 9.5"
+gtk-cursor-theme-name="Adwaita"
+gtk-cursor-theme-size=0
+gtk-toolbar-style=GTK_TOOLBAR_BOTH
+gtk-toolbar-icon-size=GTK_ICON_SIZE_SMALL_TOOLBAR
+gtk-icon-sizes = "panel-menu=16,16:panel=16,16:gtk-menu=16,16\
+:gtk-large-toolbar=16,16:gtk-small-toolbar=16,16:gtk-button=16,16"
+gtk-button-images=1
+gtk-menu-images=1
+gtk-enable-event-sounds=1
+gtk-enable-input-feedback-sounds=1
+gtk-xft-antialias=1
+gtk-xft-hinting=1
+gtk-xft-hintstyle="hintslight"
+gtk-xft-rgba="rgb"
+include "/home/ianrtaylor/.gtkrc-2.0.mine"

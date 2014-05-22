@@ -1,0 +1,15 @@
+# Temporary files
+*.swp
+.*.swp
+*~
+.*~
+
+# large files
+bin/bin/wallpapers
+
+# xmonad junk
+xmonad/.xmonad/*.o
+xmonad/.xmonad/*.hi
+xmonad/.xmonad/xmonad-x86_64-linux
+xmonad/.xmonad/*.chi
+xmonad/.xmonad/*.chs.h

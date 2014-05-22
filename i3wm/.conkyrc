@@ -1,0 +1,138 @@
+out_to_x no
+own_window no
+out_to_console yes
+background no
+max_text_width 0
+
+# Update interval in seconds
+update_interval 1.0
+
+# This is the number of times Conky will update before quitting.
+# Set to zero to run forever.
+total_run_times 0
+
+# Shortens units to a single character (kiB->k, GiB->G, etc.). Default is off.
+short_units yes
+
+# How strict should if_up be when testing an interface for being up?
+# The value is one of up, link or address, to check for the interface
+# being solely up, being up and having link or being up, having link
+# and an assigned IP address. 
+if_up_strictness address
+
+# Add spaces to keep things from moving about?  This only affects certain objects.
+# use_spacer should have an argument of left, right, or none
+use_spacer left
+
+# Force UTF8? note that UTF8 support required XFT
+override_utf8_locale no
+
+# number of cpu samples to average
+# set to 1 to disable averaging
+cpu_avg_samples 2
+
+# Stuff after 'TEXT' will be formatted on screen
+TEXT
+\
+# JSON for i3bar
+\
+[\
+{"full_text": "volume", "separator": false, "separator_block_width":5},\
+{"full_text": "${exec ~/bin/volume.sh}", "color":"\#EEEEEE"},\
+\
+{"full_text": "${exec ~/bin/cmus_status.sh}", "separator": false, "separator_block_width":5},\
+{"full_text": "${exec ~/bin/cmus.sh}", "color":"\#EEEEEE"},\
+\
+{"full_text": "home", "separator": false, "separator_block_width":5},\
+{"full_text": "${fs_free /home} Free", "color":"\#EEEEEE"},\
+\
+{"full_text": "boot", "separator": false, "separator_block_width":5},\
+{"full_text": "${fs_free /} Free", "color":"\#EEEEEE"},\
+\
+#{"full_text": "weather", "separator": false, "separator_block_width":5},\
+#{"full_text": "${execi 300 ~/bin/weather.sh}", "color":"\#EEEEEE"},\
+\
+# CPU temperature (requires lm_sensors package, change 'hwmon # temp #' to suit your needs):
+{"full_text":"CPU TEMP","color":"\#888888","separator":false,"separator_block_width":6},\
+
+{"full_text":"${if_match ${hwmon 1 temp 2}<45}${hwmon 1 temp 2}","color":"\#AAF096","separator":false,"separator_block_width":0},\
+
+{"full_text":"${else}"},\
+{"full_text":"${if_match ${hwmon 1 temp 2}<50}${hwmon 1 temp 2}","color":"\#F0DC64","separator":false,"separator_block_width":0},\
+
+{"full_text":"${else}"},\
+{"full_text":"${if_match ${hwmon 1 temp 2}<55}${hwmon 1 temp 2}","color":"\#FF9933","separator":false,"separator_block_width":0},\
+
+{"full_text":"${else}"},\
+{"full_text":"${if_match ${hwmon 1 temp 2}>=55}${hwmon 1 temp 2}","color":"\#FF3333","separator":false,"separator_block_width":0},\
+
+{"full_text":"${else}"},\
+{"full_text":"${endif}${endif}${endif}${endif}"},\
+{"full_text":"°C","color":"\#EEEEEE","separator":false,"separator_block_width":6},\
+
+# GFX temperature (requires lm_sensors package, change 'hwmon temp #' to suit your needs):
+{"full_text":"GFX TEMP","color":"\#888888","separator":false,"separator_block_width":6},\
+
+{"full_text":"${if_match ${exec nvidia-settings -query GPUCoreTemp | awk 'NR==2' | cut -d' ' -f6 | sed -e 's/.$//'}<50}${exec nvidia-settings -query GPUCoreTemp | awk 'NR==2' | cut -d' ' -f6 | sed -e 's/.$//'}","color":"\#AAF096","separator":false,"separator_block_width":0},\
+{"full_text":"${else}"},\
+{"full_text":"${if_match ${exec nvidia-settings -query GPUCoreTemp | awk 'NR==2' | cut -d' ' -f6 | sed -e 's/.$//'}<55}${exec nvidia-settings -query GPUCoreTemp | awk 'NR==2' | cut -d' ' -f6 | sed -e 's/.$//'}","color":"\#F0DC64","separator":false,"separator_block_width":0},\
+
+{"full_text":"${else}"},\
+{"full_text":"${if_match ${exec nvidia-settings -query GPUCoreTemp | awk 'NR==2' | cut -d' ' -f6 | sed -e 's/.$//'}<60}${exec nvidia-settings -query GPUCoreTemp | awk 'NR==2' | cut -d' ' -f6 | sed -e 's/.$//'}","color":"\#FF9933","separator":false,"separator_block_width":0},\
+
+{"full_text":"${else}"},\
+{"full_text":"${if_match ${exec nvidia-settings -query GPUCoreTemp | awk 'NR==2' | cut -d' ' -f6 | sed -e 's/.$//'}>=60}${exec nvidia-settings -query GPUCoreTemp | awk 'NR==2' | cut -d' ' -f6 | sed -e 's/.$//'}","color":"\#FF3333","separator":false,"separator_block_width":0},\
+
+{"full_text":"${else}"},\
+{"full_text":"${endif}${endif}${endif}${endif}"},\
+{"full_text":"°C","color":"\#EEEEEE"},\
+
+# Download (change 'wlp0s29u1u8' to suit your needs):
+{"full_text":"DOWN","color":"\#888888","separator":false,"separator_block_width":6},\
+
+{"full_text":"${if_match ${downspeedf wlp0s29u1u8}<100}${downspeed wlp0s29u1u8}","color":"\#AAF096","separator":false,"separator_block_width":6},\
+
+{"full_text":"${else}"},\
+{"full_text":"${if_match ${downspeedf wlp0s29u1u8}<300}${downspeed wlp0s29u1u8}","color":"\#68B1E8","separator":false,"separator_block_width":6},\
+
+{"full_text":"${else}"},\
+{"full_text":"${if_match ${downspeedf wlp0s29u1u8}<700}${downspeed wlp0s29u1u8}","color":"\#DB70B8","separator":false,"separator_block_width":6},\
+
+{"full_text":"${else}"},\
+{"full_text":"${if_match ${downspeedf wlp0s29u1u8}<1000}${downspeed wlp0s29u1u8}","color":"\#9470DB","separator":false,"separator_block_width":6},\
+
+{"full_text":"${else}"},\
+{"full_text":"${if_match ${downspeedf wlp0s29u1u8}>=1000}${downspeed wlp0s29u1u8}","color":"\#FF3333","separator":false,"separator_block_width":6},\
+
+{"full_text":"${endif}${endif}${endif}${endif}${endif}"},\
+# Upload (change 'wlp0s29u1u8' to suit your needs):
+{"full_text":"UP","color":"\#888888","separator":false,"separator_block_width":6},\
+
+{"full_text":"${if_match ${upspeedf wlp0s29u1u8}<15}${upspeed wlp0s29u1u8}","color":"\#AAF096"},\
+
+{"full_text":"${else}"},\
+{"full_text":"${if_match ${upspeedf wlp0s29u1u8}<35}${upspeed wlp0s29u1u8}","color":"\#9470DB"},\
+\
+{"full_text":"${else}"},\
+{"full_text":"${if_match ${upspeedf wlp0s29u1u8}>=35}${upspeed wlp0s29u1u8}","color":"\#FF3333"},\
+\
+{"full_text":"${endif}${endif}${endif}"},\
+\
+{"full_text": "kernel", "separator": false, "separator_block_width":5},\
+{"full_text": "${kernel}", "color":"\#EEEEEE"},\
+\
+{"full_text": "entropy", "separator": false, "separator_block_width":5},\
+{"full_text": "${entropy_avail}", "color":"\#EEEEEE"},\
+
+{"full_text": "uptime", "separator": false, "separator_block_width":5},\
+{"full_text": "${uptime}", "color":"\#EEEEEE"},\
+\
+{"full_text": "CPU", "separator": false, "separator_block_width":5},\
+{"full_text": "${cpu cpu0}%", "color":"\#EEEEEE"},\
+\
+{"full_text": "RAM", "separator": false, "separator_block_width":5},\
+{"full_text": "${memperc}%", "color":"\#EEEEEE"},\
+\
+{"full_text": "${time %A, %B %d, %Y}", "separator": false, "separator_block_width":5, "color":"\#EEEEEE"},\
+{"full_text": "${time %I:%M:%S %p}", "color":"\#1793D0"}\
+],\

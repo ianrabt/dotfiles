@@ -1,0 +1,4 @@
+#!/bin/bash
+# startup programs for xmonad.
+xrdb -merge <(echo 'URxvt*.background: #111111')
+xrdb -merge <(echo 'URxvt*.depth: 16')
