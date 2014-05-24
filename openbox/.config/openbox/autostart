@@ -18,4 +18,4 @@ fi
 docky & 
 tint2 -c ~/.config/tint2/black-transparent &
 ~/xinitrc/autostart --no-bg &
-feh --bg-center ~/bin/wallpapers/geometry\ minimalistic.png &
+feh --bg-fill "$HOME/bin/wallpapers/theseas_wide.jpg" &
