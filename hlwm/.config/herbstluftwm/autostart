@@ -12,7 +12,6 @@ notify-send --expire-time=5000 "Welcome back," "$USER@$HOSTNAME"
 hc emit_hook reload
 
 compton --opengl --vsync opengl-swc --paint-on-overlay -e.45 -f -D 6 -l-13 -t-13 -cCz -o 0.25 -b
-$HOME/xinitrc/autostart --no-bg &
 feh --bg-fill $HOME/bin/wallpapers/2.jpg
 
 killall stalonetray

@@ -17,7 +17,8 @@ export XDG_MENU_PREFIX=gnome-
 xscreensaver -no-splash &
 xsetroot -cursor_name left_ptr &
 
-start-pulseaudio-x11 &
+#start-pulseaudio-x11 &
+#compton --opengl --vsync opengl-swc --paint-on-overlay -b -f -D 6 -l-13 -t-13 -cCz -o 0.25 &
 
 # Here herbstluft wm is kept as default
 session=${1:-hlwm}
