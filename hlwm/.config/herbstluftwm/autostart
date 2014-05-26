@@ -11,7 +11,7 @@ notify-send --expire-time=5000 "Welcome back," "$USER@$HOSTNAME"
 
 hc emit_hook reload
 
-compton -e.45 -f -D 6 -l-13 -t-13 -cCz -o 0.25 --backend glx -b
+compton -e.45 -f -D 6 -l-13 -t-13 -cCz -o 0.25 -b
 feh --bg-fill $HOME/bin/wallpapers/2.jpg
 
 killall stalonetray
