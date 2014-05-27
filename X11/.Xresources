@@ -45,8 +45,8 @@ Xft.hintstyle:  hintslight
 ! xterm ----------------------------------------------------------------------
 
 xterm*VT100.geometry:     80x25
-xterm*faceName:           DejaVu:style=Regular:size=11
-!xterm*font:              -*-dina-medium-r-*-*-16-*-*-*-*-*-*-*
+!xterm*faceName:           DejaVu:style=Regular:size=11
+xterm*font:              -*-dina-medium-r-*-*-16-*-*-*-*-*-*-*
 xterm*dynamicColors:      true
 xterm*utf8:               2
 xterm*eightBitInput:      true
@@ -135,6 +135,10 @@ URxvt*.background: [85]#000000
 ! URxvt*borderColor: colour
 
 ! Select the fonts to be used. This is a comma separated list of font names that are
+! Terminus:
+!URxvt*font: xft:terminus:size=12
+!URxvt*boldFont: xft:terminus:size=12
+! Deja Vu:
 URxvt*font: xft:DejaVu Sans Mono:pixelsize=14:antialias=false:hinting=false
 URxvt*boldFont: xft:DejaVu Sans Mono:bold:pixelsize=14:antialias=false:hinting=false
 
@@ -296,8 +300,6 @@ URxvt*scrollBar_right: true
 ! Compile frills: Associate string with keysym sym. The intervening resource name
 ! URxvt*keysym.sym: string
 
-URxvt*perl-ext-common: default,tabbed,matcher
-
 URxvt.perl-ext-common:  default,matcher
 URxvt.url-launcher:      /usr/bin/firefox
 URxvt.matcher.button:   1
@@ -339,5 +341,3 @@ URxvt.tabbed.tab-bg:    0
 
 ! Turn on/off ISO 14755 5.2 mode (default enabled).
 ! URxvt*iso14755_52: boolean
-
-
