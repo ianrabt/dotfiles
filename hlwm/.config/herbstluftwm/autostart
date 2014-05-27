@@ -32,7 +32,7 @@ hc keybind $Mod-Shift-q close
 hc keybind $Mod-Return spawn urxvt
 
 # application shortcuts
-hc keybind $Mod-d				spawn dmenu_run -i -b
+hc keybind $Mod-d				spawn i3-dmenu-desktop --dmenu='dmenu -i -b'
 hc keybind $Mod-Shift-w			spawn firefox
 hc keybind $Mod-Shift-Return	spawn thunar
 

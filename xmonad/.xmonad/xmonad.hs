@@ -16,6 +16,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 	-- Quit xmonad
 	[ ((modm .|. shiftMask, xK_e     ), io (exitWith ExitSuccess))
 	, ((modm .|. shiftMask, xK_w     ), safeSpawnProg "firefox")
+	, ((modm , xK_p     ), safeSpawnProg "i3-dmenu-desktop")
 	]
 
 myWorkspaces = ["1:main","2:chat","3","whatever","5:media","6","7","8:web"]
