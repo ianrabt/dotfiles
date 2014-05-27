@@ -27,7 +27,6 @@ case $session in
         openbox) exec openbox-session;;
         gnome) exec gnome-session;;
         i3wm) exec i3;;
-        xmonad) exec xmonad;;
         openbox) exec openbox-session;;
         hlwm) exec herbstluftwm;;
 		xmonad) exec xmonad;;
