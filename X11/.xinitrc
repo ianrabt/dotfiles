@@ -29,7 +29,7 @@ case $session in
         i3wm) exec i3;;
         openbox) exec openbox-session;;
         hlwm) exec herbstluftwm;;
-		xmonad) exec xmonad;;
+        xmonad) exec xmonad;;
         # No known session, try to run it as command
         *) exec $1;;                
 esac

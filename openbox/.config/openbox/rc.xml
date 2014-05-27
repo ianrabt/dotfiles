@@ -249,7 +249,7 @@
     </keybind>
     <keybind key="W-space">
       <action name="Execute">
-        <command>i3-dmenu-desktop</command>
+		  <command>~/bin/dmenu-run-menu</command>
       </action>
     </keybind>
     <keybind key="W-r">
