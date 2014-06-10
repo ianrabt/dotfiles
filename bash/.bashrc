@@ -5,10 +5,6 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# uncomment to have tmux start with every session.
-# otherwise, just use "start-tmux" manually to get
-# the same effect.
-
 function start-tmux() {
 	if which tmux 2>&1 >/dev/null; then
 		# if no session is started, start a new session
@@ -20,7 +16,6 @@ function start-tmux() {
 		done
 	fi
 }
-alias st='start-tmux'
 
 # FUNCTIONS:
 
@@ -140,6 +135,13 @@ alias tset='transset-df -a'
 
 alias grep='grep --color=auto'
 alias ..='cd ..'
+
+alias st='start-tmux'
+alias  t='tmux'
+alias ta='tmux attach'
+
+# share current dir over local host; prints IP and port.
+alias share='ip addr | grep inet; python -m http.server'
 
 # Safety features
 alias cp='cp -i'
