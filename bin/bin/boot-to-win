@@ -1,0 +1,10 @@
+#!/bin/bash
+# restricted mode (limits script privileges):
+set -r
+set -o errexit
+if [[ $EUID -ne 0 ]]; then
+	echo "This script must be run as root" 1>&2
+	exit 1
+fi
+grub-reboot 2
+systemctl reboot
