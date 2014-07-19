@@ -11,9 +11,9 @@ function start-tmux() {
 		test -z ${TMUX} && tmux
 
 		# when quitting tmux, try to attach
-		while test -z ${TMUX}; do
-			tmux attach || break
-		done
+		#while test -z ${TMUX}; do
+		#	tmux attach || break
+		#done
 	fi
 }
 
@@ -140,8 +140,8 @@ alias st='start-tmux'
 alias  t='tmux'
 alias ta='tmux attach'
 
-# share current dir over local host; prints IP and port.
-alias share='ip addr | grep inet; python -m http.server'
+# share files over local host; prints IP and port.
+alias share='ip addr | grep inet; python3 -m http.server'
 
 # Safety features
 alias cp='cp -i'
