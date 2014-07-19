@@ -19,6 +19,5 @@ feh --bg-fill ~/bin/wallpapers/16.jpg &
 
 
         compton --opengl --vsync opengl-swc --paint-on-overlay -b -f -D 6 -l-13 -t-13 -cCzG &
-        start-pulseaudio-x11 &
         exec openbox-session
 

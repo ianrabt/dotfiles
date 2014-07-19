@@ -1,4 +1,5 @@
-! terminal colors ------------------------------------------------------------
+! terminal colors 
+!------------------------------------------------------------
 
 
 ! tangoesque scheme
@@ -62,9 +63,11 @@ XTerm*VT100.translations: #override <Btn1Up>: select-end(PRIMARY, CLIPBOARD, CUT
 xterm*cursorBlink:        true
 
 ! URxvt ----------------------------------------------------------------------
-URxvt*.depth: 32
+!URxvt*.depth: 32
 ! Transparency: [opacity]#000000-FFFFFF
-URxvt*.background: [85]#000000
+!URxvt*.background: [90]#000000
+URxvt*.transparent: true
+URxvt*.shading:15
 ! Compile xft: Attempt to find a visual with the given bit depth; option -depth.
 ! URxvt*depth: bitdepth
 
@@ -136,11 +139,11 @@ URxvt*.background: [85]#000000
 
 ! Select the fonts to be used. This is a comma separated list of font names that are
 ! Terminus:
-!URxvt*font: xft:terminus:size=12
-!URxvt*boldFont: xft:terminus:size=12
+URxvt*font: -*-terminus-medium-r-*--16-*-*-*-*-*-iso8859-*
+URxvt*boldFont: -*-terminus-medium-r-*--16-*-*-*-*-*-iso8859-*
 ! Deja Vu:
-URxvt*font: xft:DejaVu Sans Mono:pixelsize=14:antialias=false:hinting=false
-URxvt*boldFont: xft:DejaVu Sans Mono:bold:pixelsize=14:antialias=false:hinting=false
+!URxvt*font: xft:DejaVu Sans Mono:pixelsize=14:antialias=false:hinting=false
+!URxvt*boldFont: xft:DejaVu Sans Mono:bold:pixelsize=14:antialias=false:hinting=false
 
 ! URxvt*italicFont: fontlist
 

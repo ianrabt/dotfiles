@@ -15,4 +15,3 @@ else
 fi
 
 compton --opengl --vsync opengl-swc --paint-on-overlay -b -f -D 6 -l-13 -t-13 -cCz -o 0.25 &
-start-pulseaudio-x11
