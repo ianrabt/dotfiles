@@ -66,8 +66,9 @@ xterm*cursorBlink:        true
 !URxvt*.depth: 32
 ! Transparency: [opacity]#000000-FFFFFF
 !URxvt*.background: [90]#000000
-URxvt*.transparent: true
-URxvt*.shading:15
+!URxvt*.transparent: true
+!URxvt*.shading:15
+URxvt*.dynamicColors: on
 ! Compile xft: Attempt to find a visual with the given bit depth; option -depth.
 ! URxvt*depth: bitdepth
 

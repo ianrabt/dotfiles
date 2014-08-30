@@ -8,18 +8,14 @@ if [ -z "$geometry" ] ;then
     exit 1
 fi
 
-# get access to terminus font
-xset +fp /usr/share/fonts/local
-xset fp rehash
-
 # geometry has the format W H X Y
 x=${geometry[0]}
 y=${geometry[1]}
 panel_width=${geometry[2]}
 panel_height=16
-font="-*-dejavu sans mono-medium-r-normal--*-80-*-*-*-*-iso10646-1"
-bgcolor=$(hc get frame_border_active_color)
-selbg=$(hc get window_border_normal_color)
+font="-*-clean-medium-r-*-*-14-*-*-*-*-*-*-*"
+bgcolor=$(hc get frame_border_normal_color)
+selbg=$(hc get window_border_active_color)
 selfg='#101010'
 
 ####
@@ -66,7 +62,7 @@ hc pad $monitor $panel_height
     # e.g.
     #   date    ^fg(#efefef)18:33^fg(#909090), 2013-10-^fg(#efefef)29
 
-    #mpc idleloop player &
+    mpc idleloop player &
     while true ; do
         # "date" output is checked once a second, but an event is only
         # generated if the output changed compared to the previous run.
@@ -79,6 +75,7 @@ hc pad $monitor $panel_height
 } 2> /dev/null | {
     IFS=$'\t' read -ra tags <<< "$(hc tag_status $monitor)"
     visible=true
+	music="^fg(#909090)mpd not open"
     date=""
     windowtitle=""
     while true ; do
@@ -99,7 +96,7 @@ hc pad $monitor $panel_height
                     echo -n "^bg(#9CA668)^fg(#141414)"
                     ;;
                 ':')
-                    echo -n "^bg()^fg(#ffffff)"
+                    echo -n "^bg()^fg(#c0ffff)"
                     ;;
                 '!')
                     echo -n "^bg(#FF0675)^fg(#141414)"
@@ -121,12 +118,12 @@ hc pad $monitor $panel_height
         done
         echo -n "$separator"
         echo -n "^bg()^fg() ${windowtitle//^/^^}"
+		#music="^fg(#909090)$($HOME/bin/cmus.sh)"
         # small adjustments
-		music="^fg(#909090)$($HOME/bin/cmus.sh)"
         right="$separator^bg() $music $separator $date $separator"
         right_text_only=$(echo -n "$right" | sed 's.\^[^(]*([^)]*)..g')
         # get width of right aligned text.. and add some space..
-        width=$($textwidth "$font" "               $right_text_only")
+        width=$($textwidth "$font" "            $right_text_only")
         echo -n "^pa($(($panel_width - $width)))$right"
         echo
 
@@ -176,8 +173,9 @@ hc pad $monitor $panel_height
             focus_changed|window_title_changed)
                 windowtitle="${cmd[@]:2}"
                 ;;
-            #player)
-            #    ;;
+            player)
+                music="^fg(#909090)$(mpc | head -n1)"
+                ;;
         esac
     done
 

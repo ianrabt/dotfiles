@@ -11,8 +11,15 @@ notify-send --expire-time=5000 "Welcome back," "$USER@$HOSTNAME"
 
 hc emit_hook reload
 
-compton -e.45 -f -D 6 -l-13 -t-13 -cCz -o 0.25 -b
-feh --bg-fill $HOME/bin/wallpapers/2.jpg
+compton -f -D 6 -l-13 -t-13 -cCz -o 0.25 -b -e .6
+
+# use dark background at night
+hr="$(date +%H)"
+if [ "$hr" -gt 20 -o "$hr" -lt 7 ]; then
+	feh --bg-tile $HOME/bin/wallpapers/tiled/cartographer.png
+else
+	feh --bg-fill $HOME/bin/wallpapers/wallpaper-2997492.jpg
+fi
 
 killall stalonetray
 hc rule class~'[Ss]talonetray' manage=off
@@ -132,15 +139,18 @@ hc set focus_follows_mouse 1
 # dark: #113630
 # lite: #c7f1a9
 frame_all='#101010'
-win_normal='#c7f1a9'
-win_active='#113630'
+#win_normal='#c7f1a9'
+#win_active='#113630'
+win_normal='#818181'
+win_active='#FDFDFD'
 hc set frame_border_active_color "$frame_all"
 hc set frame_border_normal_color "$frame_all"
-hc set frame_active_opacity 055
+hc set frame_active_opacity 255
 hc set frame_normal_opacity 000
 hc set frame_border_width 2
 hc set window_border_width 6
-hc set window_border_inner_width 0
+hc set window_border_inner_width 2
+hc set window_border_inner_color '#000000'
 hc set window_border_normal_color "$win_normal"
 hc set window_border_active_color "$win_active"
 hc set always_show_frame 0
@@ -148,12 +158,15 @@ hc set frame_bg_transparent 255
 hc set frame_transparent_width 0
 hc set frame_gap 0
 # add overlapping window borders
-hc set window_gap 10
+hc set window_gap 0
 hc set frame_padding 0
-hc set frame_gap 05
+hc set frame_gap 4
 hc set smart_window_surroundings 0
 hc set smart_frame_surroundings 1
 hc set mouse_recenter_gap 0
+
+hc keybind $Mod-v       chain , set window_gap 00 , set frame_border_width 1
+hc keybind $Mod-Shift-v chain , set window_gap 10 , set frame_border_width 2
 
 # rules
 hc unrule -F
