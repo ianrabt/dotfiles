@@ -6,11 +6,13 @@
 [ ! -s ~/.config/mpd/pid ] && mpd
 clear
 
+# source .bashrc
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
-# Environment variables
+# Environment variables:
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
-PATH="/usr/lib/ccache/bin/:$PATH:$HOME/bin"
-export PATH
-EDITOR='vim'
-export EDITOR
+export PATH="/usr/lib/ccache/bin/:$PATH:$HOME/bin"
+export EDITOR='vim'
+
+# notify systemd/User of the new path
+systemctl --user import-environment PATH
