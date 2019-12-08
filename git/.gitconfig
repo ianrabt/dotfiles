@@ -1,0 +1,13 @@
+[user]
+	email = itaylor@hmc.edu
+	name = Ian Taylor
+[credential]
+	helper = cache --timeout=3600
+[magithub]
+	online = false
+[magithub "status"]
+	includeStatusHeader = false
+	includePullRequestsSection = false
+	includeIssuesSection = false
+[github]
+	user = ianrabt
