@@ -1,3 +1,6 @@
+# Secret files!
+shadow*
+
 # Temporary files
 *.swp
 .*.swp
