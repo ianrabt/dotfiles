@@ -45,15 +45,15 @@ key[ShiftTab]="${terminfo[kcbt]}"
 # Finally, make sure the terminal is in application mode, when zle is
 # active. Only then are the values from $terminfo valid.
 if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
-	autoload -Uz add-zle-hook-widget
-	function zle_application_mode_start {
-		echoti smkx
-	}
-	function zle_application_mode_stop {
-		echoti rmkx
-	}
-	add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
-	add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
+    autoload -Uz add-zle-hook-widget
+    function zle_application_mode_start {
+        echoti smkx
+    }
+    function zle_application_mode_stop {
+        echoti rmkx
+    }
+    add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
+    add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
 fi
 
 # completion settings
@@ -82,7 +82,7 @@ alias  t='tmux'
 alias ta='tmux attach'
 
 alias trash='gio trash' # convenient way to send files to trash
-			# instead of permanently deleting them.
+            # instead of permanently deleting them.
 # set the brightness to the minimum
 alias dim='light -r -S 1'
 alias redshift-oneshot='redshift -O 4250'
@@ -100,7 +100,7 @@ alias chgrp='chgrp --preserve-root'
 alias school="ranger '$HOME/School/Google Drive'"
 
 function emacsc {
-	nohup emacsclient -c $@ > /dev/null &
+    nohup emacsclient -c $@ > /dev/null &
 }
 
 # MOTD -- prints some predefined messages upon terminal startup
@@ -117,18 +117,18 @@ fi
 autoload -Uz add-zsh-hook
 
 function xterm_title_precmd () {
-	print -Pn -- '\e]2;%n@%m %~\a'
-	[[ "$TERM" == 'screen'* ]] && print -Pn -- '\e_\005{g}%n\005{-}@\005{m}%m\005{-} \005{B}%~\005{-}\e\\'
+    print -Pn -- '\e]2;%n@%m %~\a'
+    [[ "$TERM" == 'screen'* ]] && print -Pn -- '\e_\005{g}%n\005{-}@\005{m}%m\005{-} \005{B}%~\005{-}\e\\'
 }
 
 function xterm_title_preexec () {
-	print -Pn -- '\e]2;%n@%m %~ %# ' && print -n -- "${(q)1}\a"
-	[[ "$TERM" == 'screen'* ]] && { print -Pn -- '\e_\005{g}%n\005{-}@\005{m}%m\005{-} \005{B}%~\005{-} %# ' && print -n -- "${(q)1}\e\\"; }
+    print -Pn -- '\e]2;%n@%m %~ %# ' && print -n -- "${(q)1}\a"
+    [[ "$TERM" == 'screen'* ]] && { print -Pn -- '\e_\005{g}%n\005{-}@\005{m}%m\005{-} \005{B}%~\005{-} %# ' && print -n -- "${(q)1}\e\\"; }
 }
 
 if [[ "$TERM" == (screen*|xterm*|rxvt*|tmux*|putty*|konsole*|gnome*) ]]; then
-	add-zsh-hook -Uz precmd xterm_title_precmd
-	add-zsh-hook -Uz preexec xterm_title_preexec
+    add-zsh-hook -Uz precmd xterm_title_precmd
+    add-zsh-hook -Uz preexec xterm_title_preexec
 fi
 
 
@@ -147,6 +147,6 @@ else
     HIGHLIGHT_FILE='/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
     if [ -f "$HIGHLIGHT_FILE" ]
     then
-	source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     fi
 fi
