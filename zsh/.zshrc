@@ -1,7 +1,8 @@
 # history settings
 HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=3000
+SAVEHIST=3000
+PATH="$PATH:$HOME/.local/bin:$HOME/.emacs.d/bin"
 setopt appendhistory
 setopt histignorespace # ignore commands starting with space
 
