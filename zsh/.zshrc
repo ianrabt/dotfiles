@@ -84,7 +84,7 @@ alias ta='tmux attach'
 alias trash='gio trash' # convenient way to send files to trash
             # instead of permanently deleting them.
 # set the brightness to the minimum
-alias dim='light -r -S 1'
+alias dim='light -r -S 0'
 alias redshift-oneshot='redshift -O 4250'
 alias lisp='rlwrap sbcl'
 
