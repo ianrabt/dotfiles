@@ -103,6 +103,41 @@ function emacsc {
     nohup emacsclient -c $@ > /dev/null &
 }
 
+function _upgrade_item {
+    _CMD="$@"
+
+    # print separator
+    cols=$(tput cols)
+    for ((i=0; i<cols; i++));do printf "-"; done; echo
+
+    # prompt to run
+    while true; do
+        read "REPLY?Run \`$_CMD\`? [y/N]: "
+        case "$REPLY" in
+            # run command (allowing for shell syntax)
+            [Yy]* ) eval "$_CMD"; break;;
+            # otherwise exit
+            [Nn]* ) break;;
+            # (ignoring malformed input)
+            * ) : ;;
+        esac
+    done
+}
+
+function _upgrade {
+    _upgrade_item doom upgrade &&
+    _upgrade_item flatpak update &&
+    _upgrade_item "dnf changelog --upgrades; sudo dnf upgrade" &&
+    _upgrade_item sudo fwupdmgr upgrade &&
+    echo "if a lot of stuff changed, I should probably reboot..."
+    echo "use \`C-b : kill-session\` to close this tmux session"
+}
+
+function upgrade {
+    tmux new-session -d "zsh -i -c _upgrade" \; set-option remain-on-exit on \
+    \; attach
+}
+
 # MOTD -- prints some predefined messages upon terminal startup
 if [ -f ~/motd ]
 then
