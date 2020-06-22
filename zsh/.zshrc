@@ -188,6 +188,6 @@ else
     HIGHLIGHT_FILE='/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
     if [ -f "$HIGHLIGHT_FILE" ]
     then
-    source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+        source "$HIGHLIGHT_FILE"
     fi
 fi
