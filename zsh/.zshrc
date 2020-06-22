@@ -127,15 +127,21 @@ function _upgrade_item {
 function _upgrade {
     _upgrade_item doom upgrade &&
     _upgrade_item flatpak update &&
+    # sudo commands:
     _upgrade_item "dnf changelog --upgrades; sudo dnf upgrade" &&
+    _upgrade_item "sudo pacman -Syu" &&
+    # this should go last! (sometimes requires reboots):
     _upgrade_item sudo fwupdmgr upgrade &&
+    # all done.
+    echo
     echo "if a lot of stuff changed, I should probably reboot..."
     echo "use \`C-b : kill-session\` to close this tmux session"
+    echo "(\`capture-pane\` then \`save-buffer log.txt\` to save output)"
 }
 
 function upgrade {
     tmux new-session -d "zsh -i -c _upgrade" \; set-option remain-on-exit on \
-    \; attach
+        \; attach
 }
 
 # MOTD -- prints some predefined messages upon terminal startup
