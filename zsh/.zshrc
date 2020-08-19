@@ -100,7 +100,7 @@ alias chgrp='chgrp --preserve-root'
 alias school="ranger '$HOME/School/Google Drive'"
 
 function emacsc {
-    nohup emacsclient -c $@ > /dev/null &
+    nohup emacsclient -e "(select-frame-set-input-focus (selected-frame))" -c $@ > /dev/null &
 }
 
 function _upgrade_item {
