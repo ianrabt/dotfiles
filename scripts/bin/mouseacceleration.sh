@@ -9,7 +9,9 @@ PROFILE=`gsettings get org.gnome.desktop.peripherals.mouse accel-profile`
 # Check for active profile, then switch to the other
 if [ $PROFILE == "'default'" ]
 then
-	`gsettings set org.gnome.desktop.peripherals.mouse accel-profile flat`
+	notify-send --hint=int:transient:1 -u low -t 1000 "Flat profile selected."
+	gsettings set org.gnome.desktop.peripherals.mouse accel-profile flat
 else
-	`gsettings set org.gnome.desktop.peripherals.mouse accel-profile default`
+	notify-send --hint=int:transient:1 -u low -t 1000 "Default profile selected."
+	gsettings set org.gnome.desktop.peripherals.mouse accel-profile default
 fi
